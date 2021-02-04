@@ -1,5 +1,5 @@
 ## 仿造支付宝滚动条
-![预览](https://s3.ax1x.com/2021/02/02/ynncSP.png)
+[预览](https://codesandbox.io/s/blue-lake-ssdx8?file=/src/App.js)
 
 ## 使用
 npm install alipay-scroll
