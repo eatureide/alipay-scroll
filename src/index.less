@@ -1,0 +1,26 @@
+.alipayScroll-scrollView {
+  width: 100%;
+  overflow-x: scroll;
+  box-sizing: border-box;
+  &::-webkit-scrollbar {
+    opacity: 0 !important;
+    height: 0;
+  }
+}
+
+.alipayScrollElement {
+  width: 56px;
+  height: 4px;
+  background: #EEEEEE;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 16px auto 0 auto;
+  .alipayScroll-scrollBar {
+    border-radius: 4px;
+    background: #1F80CC;
+    width: 0px;
+    height: 4px;
+    position: relative;
+    left: 0;
+  }
+}

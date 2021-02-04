@@ -1,0 +1,10 @@
+/.git/
+/node_modules/
+/demo/
+/src/
+.gitignore
+.npmignore
+rollup.config.js
+tsconfig.json
+yarn.lock
+*.log
