@@ -2,12 +2,11 @@
 ![预览](https://s3.ax1x.com/2021/02/02/ynncSP.png)
 
 ## 使用
-npm i @cxy/alipay-scroll@0.1.0
+npm install alipay-scroll
 
 ```javascript
 import React, { useEffect, useState } from 'react'
-import AliPayScroll from '@cxy/alipay-scroll'
-import styles from './index.less'
+import AliPayScroll from 'alipay-scroll'
 
 export default () => {
   const [width, setWidth] = useState(0)
@@ -18,23 +17,32 @@ export default () => {
     }, 1000)
   }, [])
 
+  const style = {
+    width: `${width}px`,
+    height: '300px',
+    background: 'linear-gradient(-90deg, #29bdd9 0%, #276ace 100%)'
+  }
+
   return (
     <AliPayScroll>
-      <div className={ styles.child } style={ { width: `${width}px` } } />
+      <div style={ style } /> // 传入的内容必须是组件
     </AliPayScroll>
   )
 }
 ```
 
-如果你的内容结构较为复杂，最好先定义好内容的高宽，传入的内容必须是组件
+如果你的内容结构较为复杂，最好先定义好内容的高宽
+一个页面需要多个滚动条时需要传入keyId
 
 ``` javaScript
-<AliPayScroll keyId={0}>
-  <div className={ styles.child } style={ { width: `${width}px` } } />
-</AliPayScroll>
-<AliPayScroll  keyId={1} showScrollBar={false}>
-  <div className={ styles.child } style={ { width: `${width}px` } } />
-</AliPayScroll>
+    <>
+      <AliPayScroll keyId={ 0 }>
+        <div style={ style } />
+      </AliPayScroll>
+      <AliPayScroll keyId={ 1 } showScrollBar={ false }>
+        <div style={ style } />
+      </AliPayScroll>
+    </>
 ```
 
 ## options
