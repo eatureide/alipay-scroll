@@ -7,7 +7,9 @@ interface AliPayScrollProps {
   showScrollBar?: boolean
 }
 
-class AliPayScroll extends React.Component<AliPayScrollProps, React.FC> {
+class AliPayScroll extends React.Component<AliPayScrollProps> {
+
+  randomId: string = new Date().valueOf() + ''
 
   componentWillUnmount() {
     this.handleClearEffect()
@@ -23,8 +25,7 @@ class AliPayScroll extends React.Component<AliPayScrollProps, React.FC> {
   }
 
   handleClearEffect = () => {
-    const { keyId = 0 } = this.props
-    const scrollView = document.getElementById(`alipayScroll-scrollView-${keyId}`) as HTMLElement
+    const scrollView = document.getElementById(`alipayScroll-scrollView-${this.randomId}`) as HTMLElement
     scrollView.removeEventListener('scroll', this.handleScroll)
   }
 
@@ -33,10 +34,9 @@ class AliPayScroll extends React.Component<AliPayScrollProps, React.FC> {
      * 根据scrollView/scrollViewBox计算出内容百分比
      * 这个百分比就是scrollbar相对于alipayScrollElement的百分比
      */
-    const { keyId = 0 } = this.props
-    const scrollView = document.getElementById(`alipayScroll-scrollView-${keyId}`) as HTMLElement
-    const scrollViewBox = document.getElementById(`alipayScroll-scrollViewBox-${keyId}`) as HTMLElement
-    const scrollBar = document.getElementById(`alipayScroll-scrollBar-${keyId}`) as HTMLElement
+    const scrollView = document.getElementById(`alipayScroll-scrollView-${this.randomId}`) as HTMLElement
+    const scrollViewBox = document.getElementById(`alipayScroll-scrollViewBox-${this.randomId}`) as HTMLElement
+    const scrollBar = document.getElementById(`alipayScroll-scrollBar-${this.randomId}`) as HTMLElement
     const scrollViewOffsetWidth = scrollView.offsetWidth
     const scrollViewBoxOffsetWidth = scrollViewBox.offsetWidth
     const sW = Math.floor((scrollViewOffsetWidth / scrollViewBoxOffsetWidth) * 100)
@@ -48,10 +48,9 @@ class AliPayScroll extends React.Component<AliPayScrollProps, React.FC> {
     /**
      * 根据scrollLeft/scrollViewBox宽度计算出scrollBar的移动百分比
      */
-    const { keyId = 0 } = this.props
-    const scrollView = document.getElementById(`alipayScroll-scrollView-${keyId}`) as HTMLElement
-    const scrollViewBox = document.getElementById(`alipayScroll-scrollViewBox-${keyId}`) as HTMLElement
-    const scrollBar = document.getElementById(`alipayScroll-scrollBar-${keyId}`) as HTMLElement
+    const scrollView = document.getElementById(`alipayScroll-scrollView-${this.randomId}`) as HTMLElement
+    const scrollViewBox = document.getElementById(`alipayScroll-scrollViewBox-${this.randomId}`) as HTMLElement
+    const scrollBar = document.getElementById(`alipayScroll-scrollBar-${this.randomId}`) as HTMLElement
     const scrollViewBoxOffsetWidth = scrollViewBox.offsetWidth
     scrollView.addEventListener('scroll', (e) => {
       const res = ((scrollView.scrollLeft / scrollViewBoxOffsetWidth) * 100).toFixed(2)
@@ -63,8 +62,7 @@ class AliPayScroll extends React.Component<AliPayScrollProps, React.FC> {
     /**
      * 观察内容的变化，更新ScrollBar
      */
-    const { keyId = 0 } = this.props
-    const scrollViewBox = document.getElementById(`alipayScroll-scrollViewBox-${keyId}`) as HTMLElement
+    const scrollViewBox = document.getElementById(`alipayScroll-scrollViewBox-${this.randomId}`) as HTMLElement
     const firstElementChild = scrollViewBox.firstElementChild as HTMLElement
 
     const resizeObserver = new ResizeObserver(() => {
@@ -75,17 +73,17 @@ class AliPayScroll extends React.Component<AliPayScrollProps, React.FC> {
   }
 
   render() {
-    const { keyId = 0, showScrollBar = true } = this.props
+    const { showScrollBar = true } = this.props
     return (
       <div className="alipayScroll">
-        <div className="alipayScroll-scrollView" id={ `alipayScroll-scrollView-${keyId}` }>
-          <div className="alipayScroll-scrollViewBox" id={ `alipayScroll-scrollViewBox-${keyId}` }>
+        <div className="alipayScroll-scrollView" id={ `alipayScroll-scrollView-${this.randomId}` }>
+          <div className="alipayScroll-scrollViewBox" id={ `alipayScroll-scrollViewBox-${this.randomId}` }>
             { this.props.children || <span /> }
           </div>
         </div>
 
-        <div className="alipayScrollElement" id={ `alipayScrollElement-${keyId}` } style={ { display: showScrollBar ? 'block' : 'none' } }>
-          <div className="alipayScroll-scrollBar" id={ `alipayScroll-scrollBar-${keyId}` } />
+        <div className="alipayScrollElement" id={ `alipayScrollElement-${this.randomId}` } style={ { display: showScrollBar ? 'block' : 'none' } }>
+          <div className="alipayScroll-scrollBar" id={ `alipayScroll-scrollBar-${this.randomId}` } />
         </div>
       </div>
     )

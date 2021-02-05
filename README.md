@@ -31,23 +31,10 @@ export default () => {
 }
 ```
 
-如果你的内容结构较为复杂，最好先定义好内容的高宽
-一个页面需要多个滚动条时需要传入keyId
-
-``` javaScript
-    <>
-      <AliPayScroll keyId={ 0 }>
-        <div style={ style } />
-      </AliPayScroll>
-      <AliPayScroll keyId={ 1 } showScrollBar={ false }>
-        <div style={ style } />
-      </AliPayScroll>
-    </>
-```
+如果你的内容结构较为复杂，最好先定义好内容的高宽，否则滚动条可能无法正常运行
 
 ## options
 
 | Name          | Description                      | Type    | Default |
 | ------------- | -------------------------------- | ------- | ------- |
-| keyId         | 一个页面需要多个滚动条时需要传入 | number  | 0       |
 | showScrollBar | 是否展示滚动条                   | boolean | true    |
