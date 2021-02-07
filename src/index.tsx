@@ -37,6 +37,7 @@ class AliPayScroll extends React.Component<AliPayScrollProps> {
     const scrollView = document.getElementById(`alipayScroll-scrollView-${this.randomId}`) as HTMLElement
     const scrollViewBox = document.getElementById(`alipayScroll-scrollViewBox-${this.randomId}`) as HTMLElement
     const scrollBar = document.getElementById(`alipayScroll-scrollBar-${this.randomId}`) as HTMLElement
+    if (!scrollView || !scrollViewBox) return
     const scrollViewOffsetWidth = scrollView.offsetWidth
     const scrollViewBoxOffsetWidth = scrollViewBox.offsetWidth
     const sW = Math.floor((scrollViewOffsetWidth / scrollViewBoxOffsetWidth) * 100)
